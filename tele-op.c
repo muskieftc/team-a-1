@@ -27,7 +27,7 @@ task main()
 		leftValue = joystick.joy1_y1;
 		rightValue = joystick.joy1_y2;
 
-		motor[leftMotor] = leftValue;
+		motor[leftMotor] = -leftValue;
 		motor[rightMotor] = rightValue;
 	}
 }
