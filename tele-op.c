@@ -19,6 +19,8 @@ task main()
 
 	int leftValue = 0, rightValue = 0;
 
+	int trackMode = 0, lastCondition = 0;
+
 	// init(); PLACEHOLDER: TODO: IMPLEMENT INIT()
 
 	while(true)
@@ -31,7 +33,47 @@ task main()
 		motor[leftMotor] = leftValue;
 		motor[rightMotor] = rightValue;
 
-		motor[motorF] = joystick.joy2_y1;
-		motor[motorG] = joystick.joy2_y1;
+		if (joy1Btn(4) == 1) {
+			if (lastCondition == 0 || lastCondition == 2) {
+				if (trackMode == 1) {
+					trackMode == 0;
+				}
+				else {
+					trackMode == 1;
+				}
+
+			}
+
+			lastCondition = 4;
+		}
+		else if (joy1Btn(2) == 1) {
+			if (lastCondition == 0 || lastCondition == 4) {	
+				if (trackMode == -1) {
+					trackMode == 0;
+				}
+				else {
+					trackMode == -1;
+				}
+				
+			}
+
+			lastCondition = 2;
+		}
+		else {
+			lastCondition = 0;
+		}
+
+		if (trackMode == 1) {
+			motor[motorF] = 100;
+			motor[motorG] = 100;
+		}
+		else if (trackMode == -1) {
+			motor[motorF] = -100;
+			motor[motorG] = -100;
+		}
+		else {
+			motor[motorF] = 0;
+			motor[motorG] = 0;
+		}
 	}
 }
