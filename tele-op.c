@@ -16,6 +16,7 @@
 
 task main()
 {
+
 	int leftValue = 0, rightValue = 0;
 
 	// init(); PLACEHOLDER: TODO: IMPLEMENT INIT()
@@ -29,5 +30,8 @@ task main()
 
 		motor[leftMotor] = leftValue;
 		motor[rightMotor] = rightValue;
+
+		motor[motorF] = joystick.joy2_y1;
+		motor[motorG] = joystick.joy2_y1;
 	}
 }
