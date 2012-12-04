@@ -18,6 +18,8 @@ task main()
 {
 	int leftValue = 0, rightValue = 0;
 
+	int trackMode = 0;
+
 	// init(); PLACEHOLDER: TODO: IMPLEMENT INIT()
 
 	while(true)
@@ -29,5 +31,35 @@ task main()
 
 		motor[leftMotor] = leftValue;
 		motor[rightMotor] = rightValue;
+
+		if (joy1Btn(4) == 1) {
+			if (trackMode == 1) {
+				trackMode == 0;
+			}
+			else {
+				trackMode == 1;
+			}
+		}
+		else if (joy1Btn(2) == 1) {
+			if (trackMode == -1) {
+				trackMode == 0;
+			}
+			else {
+				trackMode == -1;
+			}
+		}
+
+		if (trackMode == 1) {
+			motor[motorF] = 100;
+			motor[motorG] = 100;
+		}
+		else if (trackMode == -1) {
+			motor[motorF] = -100;
+			motor[motorG] = -100;
+		}
+		else {
+			motor[motorF] = 0;
+			motor[motorG] = 0;
+		}
 	}
 }
