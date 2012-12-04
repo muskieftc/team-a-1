@@ -18,7 +18,7 @@ task main()
 {
 	int leftValue = 0, rightValue = 0;
 
-	int trackMode = 0;
+	int trackMode = 0, lastCondition = 0;
 
 	// init(); PLACEHOLDER: TODO: IMPLEMENT INIT()
 
@@ -33,20 +33,33 @@ task main()
 		motor[rightMotor] = rightValue;
 
 		if (joy1Btn(4) == 1) {
-			if (trackMode == 1) {
-				trackMode == 0;
+			if (lastCondition == 0 || lastCondition == 2) {
+				if (trackMode == 1) {
+					trackMode == 0;
+				}
+				else {
+					trackMode == 1;
+				}
+
 			}
-			else {
-				trackMode == 1;
-			}
+
+			lastCondition = 4;
 		}
 		else if (joy1Btn(2) == 1) {
-			if (trackMode == -1) {
-				trackMode == 0;
+			if (lastCondition == 0 || lastCondition == 4) {	
+				if (trackMode == -1) {
+					trackMode == 0;
+				}
+				else {
+					trackMode == -1;
+				}
+				
 			}
-			else {
-				trackMode == -1;
-			}
+
+			lastCondition = 2;
+		}
+		else {
+			lastCondition = 0;
 		}
 
 		if (trackMode == 1) {
