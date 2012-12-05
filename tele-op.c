@@ -23,8 +23,7 @@ task main()
 
 	// init(); PLACEHOLDER: TODO: IMPLEMENT INIT()
 
-	while(true)
-	{
+	while(true) {
 		getJoystickSettings(joystick);
 
 		leftValue = joystick.joy1_y1;
@@ -36,42 +35,33 @@ task main()
 		if (joy1Btn(4) == 1) {
 			if (lastCondition == 0 || lastCondition == 2) {
 				if (trackMode == 1) {
-					trackMode == 0;
+					trackMode = 0;
 				}
 				else {
-					trackMode == 1;
+					trackMode = 1;
 				}
-
 			}
-
 			lastCondition = 4;
-		}
-		else if (joy1Btn(2) == 1) {
-			if (lastCondition == 0 || lastCondition == 4) {	
+		} else if (joy1Btn(2) == 1) {
+			if (lastCondition == 0 || lastCondition == 4) {
 				if (trackMode == -1) {
-					trackMode == 0;
+					trackMode = 0;
+				} else {
+					trackMode = -1;
 				}
-				else {
-					trackMode == -1;
-				}
-				
 			}
-
 			lastCondition = 2;
-		}
-		else {
+		}	else {
 			lastCondition = 0;
 		}
 
 		if (trackMode == 1) {
 			motor[motorF] = 100;
 			motor[motorG] = 100;
-		}
-		else if (trackMode == -1) {
+		} else if (trackMode == -1) {
 			motor[motorF] = -100;
 			motor[motorG] = -100;
-		}
-		else {
+		}	else {
 			motor[motorF] = 0;
 			motor[motorG] = 0;
 		}
